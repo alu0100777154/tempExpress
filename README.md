@@ -1,4 +1,4 @@
-# Práctica 4 Conversor temperaturas con Web Worker
+# Práctica 5 Conversor temperaturas con Web Worker
 # Sistemas y Tecnologías Web de la ULL
 ## Guillermo Vicente Sánchez Guindulain
 
