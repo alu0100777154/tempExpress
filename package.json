@@ -45,5 +45,8 @@
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/alu0100777154/temperature-2.0/issues"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
   }
 }
