@@ -42,32 +42,28 @@ Temperatura.prototype.FtoC = function(){
   return (this.get_valor()-32)*5/9;
 };
 
-
-
-
-function calculate() {
-  var result;
-  var temp = new Temperatura;
-  var original       = document.getElementById("original");
-  var tempo = original.value;
-  var regexp = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([cCfF])\s*$/i;
-  
-  var m = tempo.match(regexp);
-  
-  if (m) {
-    temp.set_valor(parseFloat(m[1]));  //num
-    temp.set_tipo(m[2]);               //type
-    if (temp.tipo === 'c' || temp.tipo === 'C') {
-      result = (temp.valor * 9/5)+32;  //1,8
-      result = result.toFixed(1)+" Farenheit";
+Temperatura.prototype.init = function(temp){
+    var regexp = /^\s*([-+]?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\s*([cCfF])\s*$/i;
+    var valor = temp.match(regexp);
+    if(valor !== null){
+    this.set_valor(parseFloat(valor[1]));
+    this.set_tipo(valor[2]);
     }
-    else {
-      result = (temp.valor - 32)*5/9;
-      result =  result.toFixed(1)+" Celsius";
-    }
-    converted.innerHTML = result;
+};
+
+Temperatura.prototype.convert = function(){
+  if(this.get_valor() === undefined || this.get_tipo() === undefined){
+    return ("ERROR! Prueba con algo como esto '-4.2C'");
   }
-  else {
-    converted.innerHTML = "ERROR! Try something like '-4.2C' instead";
+
+  if(this.get_tipo() === 'C' || this.get_tipo() ==='c'){
+    var result = (this.get_valor()*(9/5))+32;
+    return ("El resultado es " + result + " " + "F");
   }
-}
+
+  else{
+    var result = (this.get_valor()-32)*(5/9);
+    return ("El resultado es " + result + " " + "C");
+  }
+  
+};

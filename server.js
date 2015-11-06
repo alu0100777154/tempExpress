@@ -11,12 +11,22 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 var expressLayouts = require('express-ejs-layouts');
+app.set('layout', 'index'); // defaults to 'layout'  '
+
+
+// Serve static files
+app.use(express.static('.'));
+app.use(expressLayouts);
+
+app.set('port', (process.env.PORT || 8080)); 
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // use res.render to load up an ejs view file
-
 // index page 
 app.get('/', function(req, res) {
-    res.render('pages/index');
+    res.render('index');
 });
 
 // about page 
@@ -24,5 +34,15 @@ app.get('/', function(req, res) {
 //    res.render('pages/about');
 //});
 
-app.listen(8080);
-console.log('8080 is the magic port');
+app.post('/', function(req, res){
+  var inicial = new temperatura();
+  inicial.inicializar(req.body.ini_temp);
+
+  var resultado = inicial.convert();
+   res.render('res', {resultado: resultado, title: 'res'});
+});
+
+
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'));
+});
