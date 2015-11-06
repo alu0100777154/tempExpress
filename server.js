@@ -11,7 +11,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 var expressLayouts = require('express-ejs-layouts');
-app.set('layout', 'index'); // defaults to 'layout'  '
+app.set('layout', 'layout'); // defaults to 'layout'  '
 
 
 // Serve static files
@@ -36,7 +36,7 @@ app.get('/', function(req, res) {
 
 app.post('/', function(req, res){
   var inicial = new temperatura();
-  inicial.inicializar(req.body.ini_temp);
+  inicial.init(req.body.original);
 
   var resultado = inicial.convert();
    res.render('res', {resultado: resultado, title: 'res'});

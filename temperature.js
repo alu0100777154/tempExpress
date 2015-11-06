@@ -67,3 +67,5 @@ Temperatura.prototype.convert = function(){
   }
   
 };
+
+module.exports = Temperatura;

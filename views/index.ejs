@@ -1,21 +1,11 @@
-<html>
-    <head>
-        <% include partials/head %>
-    </head>
-    <body>
-        <h1>Temperature Converter</h1>
-        <form action="/" method="post">
-        <table>
-            <tr>
-                <th>Enter  Temperature (examples: 32F, 45C, -2.5f):</th>
-                <td><input id="original" placeholder="32F" size="50"></td>
-            </tr>
-            <tr>
-                <th>Converted Temperature: <%= resultado %>. <br> </th>                
-            </tr>
-        </table>
-        <footer>
-            <% include partials/footer %>
-        </footer>
-    </body>
-</html>
+<h1>Conversor de Temperaturas con Express</h1>
+
+<div>
+  <form action="/" method="post">
+    <table>
+      <tr>
+        <th>Introduzca la temperatura a convertir (ejemplo: 32F, 45C, -2.5f):</th>
+        <td><input type="text" name="original" placeholder="32F" size="50" autofocus onchange=""/></td>
+      </tr>
+    </table>
+</div>
